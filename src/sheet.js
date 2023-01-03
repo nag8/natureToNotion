@@ -14,8 +14,8 @@ function getToken(){
   const sheet = SpreadsheetApp.getActive().getSheetByName(SHEET.config.name);
   return {
     notion: {
-      token: sheet.getRange(SHEET.range.notion.token),
-      dbId: sheet.getRange(SHEET.range.notion.dbId),
+      token: sheet.getRange(SHEET.config.range.notion.token).getValue(),
+      dbId: sheet.getRange(SHEET.config.range.notion.dbId).getValue(),
     },
   };
 }
