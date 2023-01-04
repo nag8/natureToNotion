@@ -1,5 +1,6 @@
 class HomeLog{
-  constructor(){
+  constructor(natureToken){
+    this.device = getNatureDeviceList(natureToken).shift();
   }
 
   setNotion(notionToken, notionDatabaseId){
@@ -7,8 +8,8 @@ class HomeLog{
 
     notionRecord.setTitle('名前', `homeLog ${dayjs.dayjs().format('YYYY/MM/DD HH:mm')}`);
     notionRecord.setIcon('🌡️');
-    notionRecord.setPropertiesNumber('温度', 0);
-    notionRecord.setPropertiesNumber('湿度', 0);
+    notionRecord.setPropertiesNumber('温度', this.device.newest_events.te.val);
+    notionRecord.setPropertiesNumber('湿度', this.device.newest_events.hu.val / 100);
 
     Notion.initManager(notionToken).createRecord(notionDatabaseId, notionRecord);
   }

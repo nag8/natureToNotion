@@ -3,8 +3,11 @@ const SHEET = {
     name: 'config',
     range: {
       notion: {
-        token: 'B1',
-        dbId: 'B2',
+        token: 'b1',
+        dbId: 'b2',
+      },
+      nature: {
+        token: 'b3',
       },
     },
   },
@@ -16,6 +19,9 @@ function getToken(){
     notion: {
       token: sheet.getRange(SHEET.config.range.notion.token).getValue(),
       dbId: sheet.getRange(SHEET.config.range.notion.dbId).getValue(),
+    },
+    nature: {
+      token: sheet.getRange(SHEET.config.range.nature.token).getValue(),
     },
   };
 }
